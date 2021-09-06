@@ -1,0 +1,9 @@
+#
+CC=gcc
+
+test: adxl355_test.o adxl355.o
+	gcc -o test adxl355_test.o adxl355.o
+adxl355_test.o : adxl355_test.c adxl355.h
+	gcc -c adxl355_test.c
+adxl355.o : adxl355.c adxl355.h
+	gcc -c adxl355.c
