@@ -6,7 +6,8 @@
 int main(int argc, char const *argv[]) {
   /* code */
   char *i2cFileName = "/dev/i2c-1";
-  int driverAddress = 0x53;
+  //int driverAddress = 0x53;
+  int driverAddress = 0x1D;
   int axisX;
   int axisY;
   int axisZ;
@@ -50,8 +51,8 @@ int main(int argc, char const *argv[]) {
     }
     time = clock();
     AXDXL355_getAxes(&axisX,&axisY,&axisZ);
-    printf("%d,%d,%d,%d\n",time,axisX,axisY,axisZ);
-    fprintf(fp,"%d,%d,%d,%d\n",time,axisX,axisY,axisZ);
+    printf("%ld,%d,%d,%d\n",time,axisX,axisY,axisZ);
+    fprintf(fp,"%ld,%d,%d,%d\n",time,axisX,axisY,axisZ);
   }
 
   AXDXL355_end();

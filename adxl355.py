@@ -80,7 +80,8 @@ class ADXL355:
 
     _devAddr = None
 
-    def __init__(self, addr = 0x53):
+    #def __init__(self, addr = 0x53):
+    def __init__(self, addr = 0x1D):
         self._devAddr = addr
 
     def begin(self):
@@ -98,11 +99,11 @@ class ADXL355:
     def getLowpassFilter(self):
         return (bus.read_byte_data(self._devAddr, LOWPASS_FILTER)) & LOWPASS_FILTER_MASK
 
-    def setLowpassFilter(self, newLowpassFilter)
+    def setLowpassFilter(self, newLowpassFilter):
         if type(newLowpassFilter) is not int:
             raise ValueError('newLowpassFilter must be an integer')
 
-        if newLowpassFilter < LOWPASS_FILTER_3_906 or newLowpassFilter > LOWPASS_FILTER_4000
+        if newLowpassFilter < LOWPASS_FILTER_3_906 or newLowpassFilter > LOWPASS_FILTER_4000:
             raise ValueError('newLowpassFilter is out of range')
 
         lowpassFilter = bus.read_byte_data(self._devAddr, LOWPASS_FILTER)
@@ -185,28 +186,28 @@ class ADXL355:
 if __name__ == "__main__":
     adxl355 = ADXL355()
 
-    print 'Set range to 4G'
+    print ('Set range to 4G')
     adxl355.range = ADXL355Range.range4G
-    print "Range = %d" % adxl355.range
-    print 'Set range to 2G'
+    print ("Range = %d" % adxl355.range)
+    print ('Set range to 2G')
     adxl355.range = ADXL355Range.range2G
-    print "Range = %d" % adxl355.range
+    print ("Range = %d" % adxl355.range)
 
-    print 'Set low pass filter to 62.5'
+    print ('Set low pass filter to 62.5')
     adxl355.lowpassFilter = ADXL355LowpassFilter.lowpassFilter_62_5
-    print 'Low pass filter = %d" % adxl355.lowpassFilter
+    print ('Low pass filter = %d" % adxl355.lowpassFilter')
 
-    print "Measuring? %r" % adxl355.isRunning
-    print "Activate sensor"
+    print ("Measuring? %r" % adxl355.isRunning)
+    print ("Activate sensor")
     adxl355.begin()
-    print "Measuring? %r" % adxl355.isRunning
-    print "Status = %d" % adxl355.status
-    print "Temperature = %dC" % adxl355.temperature
+    print ("Measuring? %r" % adxl355.isRunning)
+    print ("Status = %d" % adxl355.status)
+    print ("Temperature = %dC" % adxl355.temperature)
     allAxes = adxl355.axes
-    print "All axes X: %d Y: %d Z: %d" % (allAxes['x'], allAxes['y'], allAxes['z'])
-    print 'Axis X only: %d' % adxl355.axisX
-    print 'Axis Y only: %d' % adxl355.axisY
-    print 'Axis Z only: %d' % adxl355.axisZ
-    print 'Deactivate sensor'
+    print ("All axes X: %d Y: %d Z: %d" % (allAxes['x'], allAxes['y'], allAxes['z']))
+    print ('Axis X only: %d' % adxl355.axisX)
+    print ('Axis Y only: %d' % adxl355.axisY)
+    print ('Axis Z only: %d' % adxl355.axisZ)
+    print ('Deactivate sensor')
     adxl355.end()
-    print "Measuring? %r" % adxl355.isRunning
+    print ("Measuring? %r" % adxl355.isRunning)
