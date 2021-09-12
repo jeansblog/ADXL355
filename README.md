@@ -6,16 +6,18 @@ NVIDIA jetson  install
 sudo apt-get install libi2c-dev i2c-tools <BR>
 sudo apt-get install i2c-tools python3-smbus
 
-sudo i2cdetect -y -r 1
+sudo i2cdetect -y -r 1  
 
-python 
-/usr/bin/python3 adxl355example.py
+### Python
+  $ /usr/bin/python3 adxl355example.py  
+  
+### C code
+  $ cd cp_jetson  
+  $ make  
+  $ ./loop  
 
-or
-C code
-./loop
-
-jetson TX2 J21
+### Jetson TX2 and ADXL355
+Jetson TX2 J21
 https://www.jetsonhacks.com/nvidia-jetson-tx2-j21-header-pinout/
 
 J21
