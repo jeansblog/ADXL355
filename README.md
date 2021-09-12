@@ -1,5 +1,5 @@
-# ADXL355
-Minimal Python class to read data from an ADXL355 accelerometer
+# ADXL355 for Jetson TX2
+Minimal Python class and C code to read data from an ADXL355 accelerometer
 
 NVIDIA jetson  install
 
