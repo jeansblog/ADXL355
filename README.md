@@ -1,5 +1,5 @@
 # ADXL355 for Jetson TX2
-Minimal Python class and C code to read data from an ADXL355 accelerometer
+Python and C code to read data from an ADXL355 accelerometer
 
 NVIDIA jetson  install
 
@@ -8,7 +8,12 @@ sudo apt-get install i2c-tools python3-smbus
 
 sudo i2cdetect -y -r 1
 
+python 
 /usr/bin/python3 adxl355example.py
+
+or
+C code
+./loop
 
 jetson TX2 J21
 https://www.jetsonhacks.com/nvidia-jetson-tx2-j21-header-pinout/
